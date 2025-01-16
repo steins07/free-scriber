@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Footer from "./components/Footer"
 import Header from "./components/Header"
 import Homepage from "./components/Homepage"
@@ -6,10 +6,14 @@ import FileDisplay from "./components/FileDisplay"
 
 
 function App() {
-  const [file, setFile] = useState<File|null>(null)
-  const [audioStream, setAudioStream] = useState<MediaStream|null>(null)
+  const [file, setFile] = useState<File | null>(null)
+  const [audioStream, setAudioStream] = useState<Blob | null>(null)
 
   const isAudioAvailable = file || audioStream;
+
+  useEffect(() => {
+    console.log(audioStream);
+  }, [audioStream])
   function handleAudioReset() {
     setFile(null);
     setAudioStream(null);
