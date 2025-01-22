@@ -2,8 +2,8 @@ import { useState } from "react"
 import Transcription from "./Transcription"
 import Translation from "./Translation"
 
-export default function Information() {
-
+export default function Information(props) {
+const {output}=props
     const [tab, setTab] = useState('transcription')
 
     return (
@@ -15,17 +15,17 @@ export default function Information() {
             </h1>
             <div className="grid grid-cols-2 mx-auto bg-white shadow-md rounded-full overflow-hidden items-center">
                 <button
-                    className={`px-4 py-1 duration-200 font-medium ${tab === 'transcription' ? ' bg-blue-400 text-white' : 'text-blue-400 hover:text-blue-600'}`}
+                    className={`px-4 py-1 duration-200 ${tab === 'transcription' ? ' bg-blue-300 text-white' : 'text-blue-400 hover:text-blue-600'}`}
                     onClick={() => setTab('transcription')}>
                     Transcription
                 </button>
-                <button className={'px-4 py-1 duration-200 font-medium ' + (tab === 'translation' ? ' bg-blue-400 text-white' : 'text-blue-400 hover:text-blue-600')}
+                <button className={'px-4 py-1 duration-200 ' + (tab === 'translation' ? ' bg-blue-300 text-white' : 'text-blue-400 hover:text-blue-600')}
                     onClick={() => setTab('translation')}>
                     Translation
                 </button>
             </div>
             {
-                tab === 'transcription' ? <Transcription /> : <Translation />
+                tab === 'transcription' ? <Transcription {...props}/> : <Translation {...props} />
             }
         </main >
     )
