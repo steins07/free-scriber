@@ -1,6 +1,7 @@
-import { pipeline, PipelineType } from "@xenova/transformers";
+import { pipeline, PipelineType ,env} from "@xenova/transformers";
 import { MessageTypes } from "./presets";
 
+env.allowLocalModels=false;
 interface AudioData {
     data: ArrayBuffer;
     sampleRate: number;
@@ -62,8 +63,9 @@ async function transcribe(audio: AudioData): Promise<void> {
         pipelineInstance = await MyTranscriptionPipeline.getInstance(
             load_model_callback
         );
-    } catch (err: any) {
-        console.error(err.message);
+    } catch (err: unknown) {
+        const error = err as Error;
+        console.error(error.message);
         sendLoadingMessage("error");
         return;
     }
