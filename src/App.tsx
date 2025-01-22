@@ -40,6 +40,8 @@ function App() {
         case 'RESULT':
           setOutput(event.data.results);
           console.log('Downloading...');
+          console.log(event.data.results);
+
           break;
         case 'INFERENCE_DONE':
           setFinished(true);
@@ -88,11 +90,11 @@ function App() {
         <section className="min-h-screen flex flex-col ">
           <Header />
           {output ? (
-            <Information />) : (
+            <Information output={output}/>) : (
             loading ? (
               <Transcribing />) : (
               isAudioAvailable ? (
-                <FileDisplay handleAudioReset={handleAudioReset} file={file} audioStream={audioStream} />
+                <FileDisplay handleFormSubmission={handleFormSubmission} handleAudioReset={handleAudioReset} file={file} audioStream={audioStream} />
               ) : (
                 <Homepage setFile={setFile} setAudioStream={setAudioStream} />
               )))}
