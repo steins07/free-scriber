@@ -41,7 +41,7 @@ class MyTranscriptionPipeline {
         progress_callback: (data: ProgressCallbackData) => void
     ): Promise<any> {
         if (this.instance === null) {
-            this.instance = await pipeline(this.task, null, { progress_callback });
+            this.instance = await pipeline(this.task, undefined, { progress_callback });
         }
         return this.instance;
     }
