@@ -1,7 +1,9 @@
 
-function Transcription() {
+function Transcription(props) {
+  const {output}=props
+  const TranscribedText= output.map(val=>val.text)
   return (
-    <div>Transcription</div>
+    <div>{TranscribedText}</div>
   )
 }
 
