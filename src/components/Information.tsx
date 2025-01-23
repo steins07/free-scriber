@@ -10,7 +10,7 @@ export default function Information(props) {
     const [toLanguage, setToLanguage] = useState('Select Language')
     const worker = useRef<Worker>()
 
-    const textElement = tab === 'transcription' ? output.map(val => val.text) : translation||'No Translation Available';
+    const textElement = tab === 'transcription' ? output.map((val:any) => val.text) : translation||'No Translation Available';
     console.log(textElement);
 
     useEffect(() => {
@@ -43,11 +43,11 @@ export default function Information(props) {
 
 
     function handleCopy() {
-        navigator.clipboard.writeText()
+        navigator.clipboard.writeText(textElement)
     }
     function handleDownload() {
         const element = document.createElement('a');
-        const file = new Blob([], { type: 'text/plain' });
+        const file = new Blob([textElement], { type: 'text/plain' });
         element.href = URL.createObjectURL(file);
         element.download = (`FreeScriber_${(new Date()).toDateString()}.txt`);
         document.body.appendChild(element);
@@ -94,10 +94,10 @@ export default function Information(props) {
                 }
             </div>
             <div className="flex items-center gap-4 mx-auto">
-                <button title="Copy" className=" bg-white/90 text-blue-400 px-2 aspect-square grid place-items-center rounded hover:text-blue-500 duration-200  ">
+                <button onClick={handleCopy} title="Copy" className=" bg-white/90 text-blue-400 px-2 aspect-square grid place-items-center rounded hover:text-blue-500 duration-200  ">
                     <i className="fa-solid fa-copy"></i>
                 </button>
-                <button title="Download" className="bg-white/90 text-blue-400 p-2 aspect-square grid place-items-center rounded  hover:text-blue-500 duration-200 " >
+                <button onClick={handleDownload} title="Download" className="bg-white/90 text-blue-400 p-2 aspect-square grid place-items-center rounded  hover:text-blue-500 duration-200 " >
                     <i className="fa-solid fa-download"></i>
                 </button>
             </div>
