@@ -1,9 +1,9 @@
 
 function Transcription(props) {
-  const {output}=props
-  const TranscribedText= output.map(val=>val.text)
+  const {textElement,} = props
+  console.log("form Transcription", textElement)
   return (
-    <div>{TranscribedText}</div>
+    <div>{textElement}</div>
   )
 }
 
