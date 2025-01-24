@@ -20,3 +20,10 @@ export interface ITranscribingType {
 export interface ITranscriptionType {
     textElement: string;
 }
+export interface ITranslationType {
+    textElement: string
+    translating: boolean
+    toLanguage: string
+    setToLanguage: React.Dispatch<React.SetStateAction<string>>
+    generateTranslation: () => void
+  }
