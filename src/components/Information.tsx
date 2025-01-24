@@ -92,7 +92,7 @@ export default function Information({output}:IInformationType) {
             </div>
             <div className="my-8 flex flex-col">
                 {
-                    tab === 'transcription' ? <Transcription textElement={textElement} output={output} /> : <Translation output={output}
+                    tab === 'transcription' ? <Transcription textElement={textElement} /> : <Translation 
                         textElement={textElement} translating={translating} toLanguage={toLanguage} setToLanguage={setToLanguage} generateTranslation={generateTranslation} />
                 }
             </div>

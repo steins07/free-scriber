@@ -1,12 +1,13 @@
+import { ITranslationType } from "../types/allTypes"
 import { LANGUAGES } from "../utils/presets"
 
-function Translation(props) {
-  const {
-    textElement,
-    translating,
-    toLanguage,
-    setToLanguage,
-    generateTranslation } = props
+function Translation({
+  textElement,
+  translating,
+  toLanguage,
+  setToLanguage,
+  generateTranslation }: ITranslationType) {
+ 
   return (
     <div className="flex flex-col gap-2 max-w-[400px] w-full mx-auto">
       {!translating && (<div className="flex flex-col gap-1 ">
