@@ -1,16 +1,19 @@
 import { useEffect, useRef, useState } from "react"
 import Transcription from "./Transcription"
 import Translation from "./Translation"
+import { IInformationType } from "../types/allTypes";
 
-export default function Information(props) {
-    const { output } = props
+
+export default function Information({output}:IInformationType) {
+    console.log("Output:", output);
     const [tab, setTab] = useState('transcription')
     const [translation, setTranslation] = useState(null)
     const [translating, setTranslating] = useState(false)
     const [toLanguage, setToLanguage] = useState('Select Language')
     const worker = useRef<Worker>()
 
-    const textElement = tab === 'transcription' ? output.map((val:any) => val.text) : translation||'No Translation Available';
+    const transcribedText: string = output.map((val) => val.text).join('');
+    const textElement = tab === 'transcription' ? transcribedText : translation || 'No Translation Available';
     console.log(textElement);
 
     useEffect(() => {
@@ -89,7 +92,7 @@ export default function Information(props) {
             </div>
             <div className="my-8 flex flex-col">
                 {
-                    tab === 'transcription' ? <Transcription textElement={textElement} {...props} /> : <Translation {...props}
+                    tab === 'transcription' ? <Transcription textElement={textElement} output={output} /> : <Translation output={output}
                         textElement={textElement} translating={translating} toLanguage={toLanguage} setToLanguage={setToLanguage} generateTranslation={generateTranslation} />
                 }
             </div>
