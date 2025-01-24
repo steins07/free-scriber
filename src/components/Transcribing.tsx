@@ -1,5 +1,6 @@
-export default function Transcribing(props) {
-    const { downloading } = props;
+import { ITranscribingType } from "../types/allTypes";
+
+export default function Transcribing({downloading}:ITranscribingType) {
     return (
         <div className="flex items-center flex-1 flex-col  justify-center gap-10 md:gap-14 pb-24 p-4 text-center">
             <div className="flex flex-col gap-2 sm:gap-4">

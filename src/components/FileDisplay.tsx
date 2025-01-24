@@ -1,11 +1,6 @@
+import { IFileDisplayPropType } from "../types/allTypes";
 
-interface IFileDisplayPropType {
-    handleAudioReset: () => void;
-    handleFormSubmission: () => void;
-    file: File | null;
-    audioStream: Blob | null;
-}
-export default function FileDisplay({ handleFormSubmission,handleAudioReset, file, audioStream }:IFileDisplayPropType) {
+export default function FileDisplay({ handleFormSubmission,handleAudioReset, file}:IFileDisplayPropType) {
     return (
         <main
             className="flex-1 flex flex-col justify-center p-4 gap-3 sm:gap-4  sm:w-96 text-center pb-20 w-72 max-w-full mx-auto"

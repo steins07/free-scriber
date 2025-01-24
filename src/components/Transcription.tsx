@@ -1,6 +1,6 @@
+import { ITranscriptionType } from "../types/allTypes";
 
-function Transcription(props) {
-  const {textElement,} = props
+function Transcription({textElement}:ITranscriptionType) {
   console.log("form Transcription", textElement)
   return (
     <div>{textElement}</div>
