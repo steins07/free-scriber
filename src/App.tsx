@@ -12,7 +12,7 @@ import { IOutputItem } from "./types/allTypes"
 function App() {
   const [file, setFile] = useState<File | null>(null);
   const [audioStream, setAudioStream] = useState<Blob | null>(null);
-  const [output, setOutput] = useState<IOutputItem[]|null>(null);
+  const [output, setOutput] = useState<IOutputItem[] | null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [finished, setFinished] = useState<boolean>(false);
 
@@ -46,6 +46,10 @@ function App() {
         case 'INFERENCE_DONE':
           setFinished(true);
           console.log('Done');
+
+          if (finished) {
+            setFinished(false);
+          }
           break;
       }
     }
@@ -90,9 +94,9 @@ function App() {
         <section className="min-h-screen flex flex-col ">
           <Header />
           {output ? (
-            <Information output={output}/>) : (
+            <Information output={output} />) : (
             loading ? (
-              <Transcribing downloading={downloading}/>) : (
+              <Transcribing downloading={downloading} />) : (
               isAudioAvailable ? (
                 <FileDisplay handleFormSubmission={handleFormSubmission} handleAudioReset={handleAudioReset} file={file} />
               ) : (
