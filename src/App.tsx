@@ -6,13 +6,13 @@ import FileDisplay from "./components/FileDisplay"
 import Information from "./components/Information"
 import Transcribing from "./components/Transcribing"
 import { MessageTypes } from "./utils/presets"
+import { IOutputItem } from "./types/allTypes"
 
 
 function App() {
   const [file, setFile] = useState<File | null>(null);
   const [audioStream, setAudioStream] = useState<Blob | null>(null);
-  // const[output,setOutput] = useState<Blob | null>(null);
-  const [output, setOutput] = useState(null);
+  const [output, setOutput] = useState<IOutputItem[]|null>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [finished, setFinished] = useState<boolean>(false);
 
@@ -92,9 +92,9 @@ function App() {
           {output ? (
             <Information output={output}/>) : (
             loading ? (
-              <Transcribing />) : (
+              <Transcribing downloading={downloading}/>) : (
               isAudioAvailable ? (
-                <FileDisplay handleFormSubmission={handleFormSubmission} handleAudioReset={handleAudioReset} file={file} audioStream={audioStream} />
+                <FileDisplay handleFormSubmission={handleFormSubmission} handleAudioReset={handleAudioReset} file={file} />
               ) : (
                 <Homepage setFile={setFile} setAudioStream={setAudioStream} />
               )))}
