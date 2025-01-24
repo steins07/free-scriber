@@ -77,7 +77,7 @@ export default function Information({output}:IInformationType) {
             className="flex-1 flex flex-col justify-center p-4 gap-3 sm:gap-4 text-center pb-20  max-w-prose w-full mx-auto"
         >
             <h1 className="font-semibold text-4xl sm:text-5xl md:text-6xl whitespace-nowrap">
-                Your <span className="text-blue-400 bold">Transcription</span>
+                Your <span className="text-blue-400 bold">{tab==='transcription' ? 'Transcription' : 'Translation'}</span>
             </h1>
             <div className="grid grid-cols-2 mx-auto bg-white shadow-md rounded-full overflow-hidden items-center">
                 <button
